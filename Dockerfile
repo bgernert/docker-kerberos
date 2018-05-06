@@ -30,6 +30,10 @@ ADD start_kerberos /root/start_kerberos
 # Allow execution of start script
 RUN chmod u+x /root/start_kerberos
 
+# Set config environment
+RUN echo "export KRB5_CONFIG=/kerberos/krb5.conf" >> /root/.bashrc
+RUN echo "export KRB5_KDC_PROFILE=/kerberos/krb5kdc/kdc.conf" >> /root/.bashrc
+
 # Make Kerberos ports available
 EXPOSE 88
 EXPOSE 464
